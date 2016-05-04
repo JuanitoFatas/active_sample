@@ -12,12 +12,12 @@ module ActiveSample
 
     return nil if count == 0
 
-    if n == 0
-      where(id: [])
-    elsif n > count
+    if n > count
       where(id: ids.shuffle)
     elsif n > 1
       where(id: ids.sample(n))
+    elsif n == 0
+      where(id: [])
     else
       find ids.sample
     end
