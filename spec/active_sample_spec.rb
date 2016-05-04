@@ -15,6 +15,15 @@ describe ActiveSample do
     end
 
     context "with records" do
+      it "sample 0 record" do
+        user = User.create
+
+        result = User.sample(0)
+
+        expect(result).to be_a ActiveRecord::Relation
+        expect(result.size).to eq 0
+      end
+
       it "sample a record" do
         user = User.create
 
