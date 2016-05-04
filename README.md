@@ -1,4 +1,4 @@
-# ActiveSample
+# Active Sample
 
 [![Gem Version](https://badge.fury.io/rb/active_sample.svg)](https://badge.fury.io/rb/active_sample)
 [![Build Status](https://travis-ci.org/JuanitoFatas/active_sample.svg?branch=master)](https://travis-ci.org/JuanitoFatas/active_sample)
