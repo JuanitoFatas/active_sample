@@ -2,3 +2,5 @@ sudo: false
 language: ruby
 rvm:
   - 2.3.0
+before_script:
+  - psql -c "create database test_active_sample;" -U postgres
