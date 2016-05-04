@@ -10,16 +10,14 @@ module ActiveSample
       raise NegativeSampleError.new("negative sample number".freeze)
     end
 
-    if count == 0
-      nil
+    return nil if count == 0
+
+    if n > count
+      where(id: ids.shuffle)
+    elsif n > 1
+      where(id: ids.sample(n))
     else
-      if n > count
-        where(id: ids.shuffle)
-      elsif n > 1
-        where(id: ids.sample(n))
-      else
-        find ids.sample
-      end
+      find ids.sample
     end
   end
 end
