@@ -3,6 +3,11 @@ require "active_record"
 
 module ActiveSample
   def sample
+    if count == 0
+      nil
+    else
+      find ids.sample
+    end
   end
 end
 

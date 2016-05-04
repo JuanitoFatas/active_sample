@@ -11,5 +11,13 @@ describe ActiveSample do
         expect(User.sample).to be nil
       end
     end
+
+    context "with records" do
+      it "sample a record" do
+        user = User.create
+
+        expect(User.sample.id).to eq user.id
+      end
+    end
   end
 end
