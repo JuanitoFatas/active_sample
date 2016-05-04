@@ -2,7 +2,14 @@ require "active_sample/version"
 require "active_record"
 
 module ActiveSample
+  class NegativeSampleError < ArgumentError
+  end
+
   def sample(n = 1)
+    if n < 0
+      raise NegativeSampleError.new("negative sample number".freeze)
+    end
+
     if count == 0
       nil
     else

@@ -43,5 +43,11 @@ describe ActiveSample do
         end
       end
     end
+
+    context "argument handling" do
+      it "sample with negative number" do
+        expect { User.sample(-1) }.to raise_error ActiveSample::NegativeSampleError
+      end
+    end
   end
 end
