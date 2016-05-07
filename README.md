@@ -7,6 +7,8 @@ Sample functionality for Active Record.
 
 ## Usage
 
+**Don't use this for large set of data for now (See [#1](https://github.com/JuanitoFatas/active_sample/issues/1)).**
+
 ```ruby
 User.count # => 0
 User.sample => nil
