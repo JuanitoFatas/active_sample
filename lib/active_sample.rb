@@ -10,16 +10,18 @@ module ActiveSample
       raise NegativeSampleError.new("negative sample number".freeze)
     end
 
-    return nil if count == 0
+    max_id = maximum(:id)
 
-    if n > count
-      where(id: ids.shuffle)
-    elsif n > 1
-      where(id: ids.sample(n))
+    return nil if max_id == nil
+
+    if n == 1
+      while !(found = find_by(id: 1 + rand(max_id))); end
+
+      found
     elsif n == 0
-      where(id: [])
+      none
     else
-      find ids.sample
+      where(id: ids.sample(n))
     end
   end
 end
