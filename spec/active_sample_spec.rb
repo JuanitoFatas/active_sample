@@ -53,6 +53,12 @@ describe ActiveSample do
       end
     end
 
+    it "primary key is not id" do
+      2.times { PrimaryKeyNotIDUser.create }
+
+      expect { User.sample }.not_to raise_error
+    end
+
     context "argument handling" do
       it "sample with negative number" do
         expect { User.sample(-1) }.to raise_error ActiveSample::NegativeSampleError

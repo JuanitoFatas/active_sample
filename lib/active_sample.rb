@@ -10,18 +10,18 @@ module ActiveSample
       raise NegativeSampleError.new("negative sample number".freeze)
     end
 
-    max_id = maximum(:id)
+    max_id = maximum(primary_key)
 
     return nil if max_id == nil
 
     if n == 1
-      while !(found = find_by(id: 1 + rand(max_id))); end
+      while !(found = find_by(primary_key => 1 + rand(max_id))); end
 
       found
     elsif n == 0
       none
     else
-      where(id: ids.sample(n))
+      where(primary_key => ids.sample(n))
     end
   end
 end
