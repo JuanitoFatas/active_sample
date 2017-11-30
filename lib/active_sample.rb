@@ -10,19 +10,31 @@ module ActiveSample
       raise NegativeSampleError.new("negative sample number".freeze)
     end
 
+    return none if n == 0
+
     max_id = maximum(primary_key)
 
     return nil if max_id == nil
 
     if n == 1
-      while !(found = find_by(primary_key => 1 + rand(max_id))); end
-
-      found
-    elsif n == 0
-      none
+      sample_one(max_id)
     else
-      where(primary_key => ids.sample(n))
+      samples(n, max_id)
     end
+  end
+
+  def sample_one(max_id)
+    found = nil
+    while !found; found = random_record(max_id); end
+    found
+  end
+
+  def random_record(max_id)
+    find_by(primary_key => 1 + rand(max_id))
+  end
+
+  def samples(n, max_id)
+    n.times.map { sample_one(max_id) }
   end
 end
 
